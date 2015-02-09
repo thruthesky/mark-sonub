@@ -1,0 +1,41 @@
+<?php
+
+/**
+ *
+ * @file sonub.module
+ *
+ */
+spl_autoload_register( function ( $namespace ) {
+    $namespace_array = explode("\\", $namespace);
+    $class = end( $namespace_array );
+    $file_location = __DIR__ . "/src/Controller/" . $class . '.php';
+    if ( file_exists( $file_location ) ) include $file_location;
+}
+);
+
+
+function sonub_theme() {
+    return [
+        'Page1' => [
+        'variables' => [ 'myid' => null ],
+        'template' => 'Page1' //  // module/module-name/templates/Page3.html.twig
+        ],
+        'Page2' => [
+            'variables' => [ 'myid' => null ],
+            'template' => 'Page2' //  // module/module-name/templates/Page3.html.twig
+        ],
+        'register' => [
+            'variables' => [ 'title' => null, 'form'=>null ],
+            'template' => 'register'
+        ],
+        'displayQuery' => [
+        'variables' => [ 'title' => null, 'results' => null],
+        'template' => 'displayQuery'
+        ],
+        'Forum' => [
+        'variables' => [ 'title' => null, 'table' => null],
+        'template' => 'Forum'
+         ]
+
+    ];
+}

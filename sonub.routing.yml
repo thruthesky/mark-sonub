@@ -1,0 +1,45 @@
+sonub.page1:
+  path: /testimonial
+  defaults:
+    _controller: Drupal\custom\sonub\Controller\Page1::ShowPage # Controlller -> module/third/src/Controller/Page1.php
+    _title: 'Testimonial'
+  requirements:
+    _permission: 'access content'
+
+sonub.page2:
+  path: /blog
+  defaults:
+    _controller: Drupal\custom\sonub\Controller\Page2::ShowPage # Controlller -> module/third/src/Controller/Page2.php
+    _title: 'Blog'
+  requirements:
+    _permission: 'access content'
+
+sonub.register:
+  path: /register
+  defaults:
+    _controller: Drupal\custom\sonub\Controller\register::ShowPage # Controlller -> module/third/src/Controller/register.php
+    _title: 'registration'
+  requirements:
+    _permission: 'access content'
+
+sonub.displayQuery:
+  path: /displayQuery
+  defaults:
+    _controller: Drupal\custom\sonub\Controller\displayQuery::runQuery # Controlller -> module/third/src/Controller/displayQuery.php
+    _title: 'return query'
+  requirements:
+    _permission: 'access content'
+
+sonub.Forum:
+ path: /Forum
+ defaults:
+   _controller: Drupal\custom\sonub\Controller\Forum::ShowPage # Controlller -> module/third/src/Controller/displayQuery.php
+   _title: 'return Forum'
+ requirements:
+   _permission: 'access content'
+
+
+
+
+
+

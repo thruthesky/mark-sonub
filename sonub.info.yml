@@ -1,0 +1,6 @@
+# edited by makii
+name: sonub
+description: This is a Sonub test module.
+type: module
+core: 8.x
+
