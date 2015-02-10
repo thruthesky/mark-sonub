@@ -25,7 +25,7 @@ function sonub_theme() {
             'template' => 'Page2' //  // module/module-name/templates/Page3.html.twig
         ],
         'register' => [
-            'variables' => [ 'title' => null, 'form'=>null ],
+            'variables' => [ 'title' => null, 'form'=>null, 'url_photo'=>null ],
             'template' => 'register'
         ],
         'displayQuery' => [

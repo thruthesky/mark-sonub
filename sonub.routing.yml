@@ -17,7 +17,7 @@ sonub.page2:
 sonub.register:
   path: /register
   defaults:
-    _controller: Drupal\custom\sonub\Controller\register::ShowPage # Controlller -> module/third/src/Controller/register.php
+    _controller: Drupal\sonub\Controller\register::ShowPage # Controlller -> module/third/src/Controller/register.php
     _title: 'registration'
   requirements:
     _permission: 'access content'
