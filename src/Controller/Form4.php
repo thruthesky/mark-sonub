@@ -2,7 +2,7 @@
 namespace Drupal\sonub\Controller;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use LMS\Lib;
+
 
 
 /**
@@ -36,11 +36,10 @@ class Form4 extends FormBase
 
     public function validateForm(array &$form, FormStateInterface $form_state)
     {
-        lib::log('Form4::validateForm()....');
+
         $photo = $form_state->getValues()['photo'][0];
 
 
-        lib::log("fid: $photo");
 
         $file = \Drupal\file\Entity\File::load( $photo );
         if ( $file ) {
@@ -56,7 +55,7 @@ class Form4 extends FormBase
 
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
-        lib::log('Form4::submitForm()....');
+
 
         $photo = $form_state->getValues()['photo'][0];
 
