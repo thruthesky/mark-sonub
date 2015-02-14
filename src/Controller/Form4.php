@@ -1,8 +1,12 @@
 <?php
 namespace Drupal\sonub\Controller;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use LMS\Lib;
+use Drupal\file\Element\ManagedFile;
+use Drupal\file\FileInterface;
+
+
 
 
 /**
@@ -22,47 +26,52 @@ class Form4 extends FormBase
 
     public function buildForm(array $form, FormStateInterface $form_state)
     {
-        $form['photo'] = [
+          $form['photo'] = array(
             '#type' => 'managed_file',
             '#upload_location' => 'public://upload/teacher/photo',
-        ];
-        $form['submit'] = [
-            '#type' => 'submit',
-            '#value' => 'REG'
-        ] ;
+              '#ajax' => array(
+                  // Function to call when event on form element triggered.
+                  'callback' => 'Drupal\sonub\Controller\uploader::uploaderValidateCallback',
+                  // Javascript event to trigger Ajax. Currently for: 'onchange'.
+                  'event' => 'change',
+              )
+          );
         return $form;
     }
-
-
     public function validateForm(array &$form, FormStateInterface $form_state)
     {
-        lib::log('Form4::validateForm()....');
+
         $photo = $form_state->getValues()['photo'][0];
 
-
-        lib::log("fid: $photo");
+        //$run = \ManagedFile::valueCallback($form_state->getValues()['photo']);
 
         $file = \Drupal\file\Entity\File::load( $photo );
         if ( $file ) {
             $filename = $file->getFilename();
         }
 
+        /*
+         * will make file save permanently by updating status.
+         */
+
+        if (!$file->isPermanent()) {
+            $file->setPermanent();
+            $file->save();
+        }
+
+
 
         $id = \Drupal::currentUser()->getAccount()->id();
         $key = "photo:$id";
         \Drupal::state()->set( $key, $photo );
 
+
+
     }
 
     public function submitForm(array &$form, FormStateInterface $form_state)
     {
-        lib::log('Form4::submitForm()....');
 
-        $photo = $form_state->getValues()['photo'][0];
-
-        $file = \Drupal\file\Entity\File::load( $photo );
-
-        $file->setPermanent(); // no work
 
     }//class form
 }

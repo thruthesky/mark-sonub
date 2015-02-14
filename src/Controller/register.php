@@ -11,7 +11,6 @@ namespace Drupal\sonub\Controller;
 use Drupal\Core\Controller\ControllerBase ;
 
 
-
 class register extends ControllerBase {
     public function ShowPage() {
 
@@ -22,21 +21,14 @@ class register extends ControllerBase {
         $id = \Drupal::currentUser()->getAccount()->id();
         $key = "photo:$id";
 
-
-
         $fid = \Drupal::state()->get($key);
-
 
         $file = \Drupal\file\Entity\File::load( $fid );
         $url = "";
         if ( $file ) {
             $url = $file->url();
         }
-
-
         $form = \Drupal::formBuilder()->getForm( new Form4() );
-
-
         $markup = [
             '#theme' => 'register', // theme name that will be matched in *.module
             '#title' => 'register',
