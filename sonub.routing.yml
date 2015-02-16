@@ -38,6 +38,14 @@ sonub.Forum:
  requirements:
    _permission: 'access content'
 
+sonub.form:
+    path: '/expose'
+    defaults:
+        _controller: Drupal\sonub\Controller\uploader
+        _title: 'ajax callback'
+    requirements:
+        _permission: 'access administration pages'
+
 
 
 
