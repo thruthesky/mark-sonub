@@ -26,7 +26,7 @@ class register extends ControllerBase {
         $file = \Drupal\file\Entity\File::load( $fid );
         $url = "";
         if ( $file ) {
-            $url = $file->url();  
+            $url = $file->url();
         }
         $form = \Drupal::formBuilder()->getForm( new Form4() );
         $markup = [
